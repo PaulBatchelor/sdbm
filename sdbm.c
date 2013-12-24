@@ -37,6 +37,7 @@ static char rcsid[] = "$Id: sdbm.c,v 1.16 90/12/13 13:01:31 oz Exp $";
 /*
  * externals
  */
+/*
 #ifndef sun
 extern int errno;
 #endif
@@ -44,7 +45,7 @@ extern int errno;
 extern char *malloc proto((unsigned int));
 extern void free proto((void *));
 extern long lseek();
-
+*/
 /*
  * forward
  */

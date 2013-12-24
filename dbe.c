@@ -1,12 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #ifndef VMS
 #include <sys/file.h>
-#include <ndbm.h>
+//#include <ndbm.h>
 #else
 #include "file.h"
-#include "ndbm.h"
+//#include "ndbm.h"
 #endif
 #include <ctype.h>
+#include "sdbm.h"
 
 /***************************************************************************\
 **                                                                         **
