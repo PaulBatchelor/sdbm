@@ -4,6 +4,7 @@
 #
 CFLAGS = -O -DSDBM -DDUFF #-DBSD42
 #LDFLAGS = -p
+LDFLAGS = -lpcre
 
 OBJS = sdbm.o pair.o hash.o
 SRCS = sdbm.c pair.c hash.c dbu.c dba.c dbd.c util.c
@@ -14,14 +15,14 @@ MISC = README CHANGES COMPARE sdbm.3 dbe.c dbe.1 dbm.c dbm.h biblio \
 all: dbu dba dbd dbe
 
 dbu: dbu.o sdbm util.o
-	cc $(LDFLAGS) -o dbu dbu.o util.o libsdbm.a
+	cc -o dbu dbu.o util.o libsdbm.a $(LDFLAGS)
 
 dba: dba.o util.o
-	cc $(LDFLAGS) -o dba dba.o util.o
+	cc -o dba dba.o util.o $(LDFLAGS)
 dbd: dbd.o util.o
-	cc $(LDFLAGS) -o dbd dbd.o util.o
+	cc -o dbd dbd.o util.o $(LDFLAGS)
 dbe: dbe.o sdbm
-	cc $(LDFLAGS) -o dbe dbe.o libsdbm.a
+	cc -o dbe dbe.o libsdbm.a $(LDFLAGS)
 
 sdbm: $(OBJS)
 	ar cr libsdbm.a $(OBJS)

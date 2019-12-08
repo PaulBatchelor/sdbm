@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/file.h>
+#include <fcntl.h>
+
 #ifdef SDBM
 #include "sdbm.h"
 #else

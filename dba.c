@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/file.h>
+#include <fcntl.h>
 #include "sdbm.h"
 
 char *progname;

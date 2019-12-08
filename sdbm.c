@@ -15,6 +15,7 @@ static char rcsid[] = "$Id: sdbm.c,v 1.16 90/12/13 13:01:31 oz Exp $";
 #include "tune.h"
 #include "pair.h"
 
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #ifdef BSD42

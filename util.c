@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <errno.h>
 #ifdef SDBM
 #include "sdbm.h"
@@ -6,6 +7,8 @@
 #include "ndbm.h"
 #endif
 
+const char * const sys_errlist[];
+int sys_nerr;
 
 void
 oops(s1, s2)

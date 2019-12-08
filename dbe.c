@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
 #ifndef VMS
 #include <sys/file.h>
 //#include <ndbm.h>
@@ -207,7 +208,7 @@ datum db;
 }
 
 
-main(argc, argv)
+int main(argc, argv)
 int argc;
 char **argv;
 {
@@ -332,40 +333,43 @@ char **argv;
 		break;
 
 	case REGEXP:
-		if (argn < 2) {
-			fprintf(stderr, "Missing regular expression.\n");
-			goto db_exit;
-		}
-		if (re_comp(comarg[1])) {
-			fprintf(stderr, "Invalid regular expression\n");
-			goto db_exit;
-		}
-		key = dbm_firstkey(db);
-		if (dbm_error(db)) {
-			fprintf(stderr, "Error when fetching first key\n");
-			goto db_exit;
-		}
-		while (key.dptr != NULL) {
-			if (re_exec(key2s(key))) {
-				content = dbm_fetch(db, key);
-				if (dbm_error(db)) {
-					fprintf(stderr, "Error when fetching ");
-					print_datum(key);
-					printf("\n");
-					goto db_exit;
-				}
-				print_datum(key);
-				printf(": ");
-				print_datum(content);
-				printf("\n");
-				if (dbm_error(db)) {
-					fprintf(stderr, "Error when fetching next key\n");
-					goto db_exit;
-				}
-			}
-			key = dbm_nextkey(db);
-		}
-		break;
+        fprintf(stderr, "PB: this is not implemented\n");
+        /* goto db_exit; */
+		/* if (argn < 2) { */
+		/* 	fprintf(stderr, "Missing regular expression.\n"); */
+		/* 	goto db_exit; */
+		/* } */
+        /* PB: doesn't work */
+		/* if (re_comp(comarg[1])) { */
+		/* 	fprintf(stderr, "Invalid regular expression\n"); */
+		/* 	goto db_exit; */
+		/* } */
+		/* key = dbm_firstkey(db); */
+		/* if (dbm_error(db)) { */
+		/* 	fprintf(stderr, "Error when fetching first key\n"); */
+		/* 	goto db_exit; */
+		/* } */
+		/* while (key.dptr != NULL) { */
+		/* 	if (re_exec(key2s(key))) { */
+		/* 		content = dbm_fetch(db, key); */
+		/* 		if (dbm_error(db)) { */
+		/* 			fprintf(stderr, "Error when fetching "); */
+		/* 			print_datum(key); */
+		/* 			printf("\n"); */
+		/* 			goto db_exit; */
+		/* 		} */
+		/* 		print_datum(key); */
+		/* 		printf(": "); */
+		/* 		print_datum(content); */
+		/* 		printf("\n"); */
+		/* 		if (dbm_error(db)) { */
+		/* 			fprintf(stderr, "Error when fetching next key\n"); */
+		/* 			goto db_exit; */
+		/* 		} */
+		/* 	} */
+		/* 	key = dbm_nextkey(db); */
+		/* } */
+		/* break; */
 
 	case FETCH:
 		if (argn < 2) {
